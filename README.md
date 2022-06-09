@@ -12,7 +12,7 @@ Amina:
 - explore with animation options for the 3D scene
 - initial idea/inspo for the 3D scene:
 
-![https://jacobrcampbell.com/assets/media/2020-soul-22-people-in-flow.jpg]()
+![](https://jacobrcampbell.com/assets/media/2020-soul-22-people-in-flow.jpg)
 
 Zyad:
-- 
+
