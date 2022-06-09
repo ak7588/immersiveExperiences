@@ -2,9 +2,9 @@
 
 Final project Google Cardboard VR
 
-Progress logs
+# Progress logs
 
-June 9th:
+## June 9th:
 - started playing with Three.JS
 - outlined basics of the first scene
 
