@@ -29,11 +29,13 @@
         const isVR = true;
 
         function getObjectLookingAt(scene, camera) {
+            let raycaster = new THREE.Raycaster();
+
             // cast a ray through the frustum
-            this.raycaster.setFromCamera({x: 0, y: 0}, camera);
+            raycaster.setFromCamera({x: 0, y: 0}, camera);
 
             // get the list of objects the ray intersected
-            const intersectedObjects = this.raycaster.intersectObjects(scene.children);
+            const intersectedObjects = raycaster.intersectObjects(scene.children);
 
             if (intersectedObjects.length) {
                 return intersectedObjects[0].object;
@@ -42,7 +44,6 @@
 
         class PickHelper {
             constructor() {
-                this.raycaster = new THREE.Raycaster();
                 this.pickedObject = null;
                 this.pickedObjectSavedColor = 0;
             }
@@ -54,7 +55,7 @@
                     this.pickedObject = undefined;
                 }
             
-                this.pickedObject = getObjectLookingAt();
+                this.pickedObject = getObjectLookingAt(scene, camera);
 
                 if (this.pickedObject) {
                     // save its color
@@ -167,7 +168,7 @@
         // controller
         let cardboardPressController = renderer.xr.getController( 0 );
         cardboardPressController.addEventListener('selectstart', () => {
-            let obj = getObjectLookingAt();
+            let obj = getObjectLookingAt(scene, camera);
             obj.scale.set(2, 2, 2);
         });
         // cardboardPressController.addEventListener( 'selectend', () => {scene.background = new THREE.Color("green")}  );
