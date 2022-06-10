@@ -17,11 +17,11 @@ Final project Google Cardboard VR
 - glowing effect [here](https://github.com/mrdoob/three.js/blob/master/examples/webgl_geometry_dynamic.html)
 - image textures can be a custom jpg material!
 
-`const texture = new THREE.TextureLoader().load( 'textures/water.jpg' );`
-`texture.wrapS = texture.wrapT = THREE.RepeatWrapping;`
-`texture.repeat.set( 5, 5 );`
-`material = new THREE.MeshBasicMaterial( { color: 0x0044ff, map: texture } );`
-`mesh = new THREE.Mesh( geometry, material );`
+```const texture = new THREE.TextureLoader().load( 'textures/water.jpg' );
+texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+texture.repeat.set( 5, 5 );
+material = new THREE.MeshBasicMaterial( { color: 0x0044ff, map: texture } );
+mesh = new THREE.Mesh( geometry, material );```
 
 Amina's progress:
 - explored with animation options for the 3D scene
