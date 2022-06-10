@@ -42,4 +42,5 @@ Zyad:
 - think of the specific tasks to proceed from level to level
 - add event listeners for single, double, and long click on the cardboard for better interaction
 - _feedback loop_ with spatial audio for negative events (mistakes/learning points) to help the user. use audio as a way of spatialization. OR the feedback can be the phone vibration or change of color.
+- for level 3, add goowey texture / fancy designs ON TOP of the solid
 
