@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>My first three.js app</title>
+    <style>
+        body {
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "./three.module.js"
+            }
+        }
+    </script>
+
+    <script type="module">
+
+        import * as THREE from 'three'; // https://cdnjs.com/libraries/three.js
+        import { VRButton } from './VRButton.js'; // https://github.com/mrdoob/three.js/blob/master/examples/jsm/webxr/VRButton.js
+        import { OrbitControls } from './OrbitControls.js'; // https://github.com/mrdoob/three.js/blob/master/examples/jsm/controls/OrbitControls.js
+
+        const isVR = true;
+
+        class PickHelper {
+            constructor() {
+                this.raycaster = new THREE.Raycaster();
+                this.pickedObject = null;
+                this.pickedObjectSavedColor = 0;
+            }
+
+            pick(normalizedPosition, scene, camera, time) {
+                // restore the color if there is a picked object
+                if (this.pickedObject) {
+                    this.pickedObject.material.color.setHex(this.pickedObjectSavedColor);
+                    this.pickedObject = undefined;
+                }
+            
+                // cast a ray through the frustum
+                this.raycaster.setFromCamera(normalizedPosition, camera);
+                // get the list of objects the ray intersected
+                const intersectedObjects = this.raycaster.intersectObjects(scene.children);
+                if (intersectedObjects.length) {
+                    // pick the first object. It's the closest one
+                    this.pickedObject = intersectedObjects[0].object;
+
+                    // save its color
+                    this.pickedObjectSavedColor = this.pickedObject.material.color.getHex();
+                    
+                    // set its emissive color to flashing red/yellow
+                    this.pickedObject.material.color.setHex(0x000000);
+                }
+            }
+        }
+
+        function mapRange(v, a1, a2, b1, b2) {
+            return b1 + (v - a1) * (b2 - b1) / (a2 - a1);
+        };
+
+        function pickRandom(arr) {
+            return arr[Math.floor(Math.random() * arr.length)];
+        }
+
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+        if (isVR) {
+            renderer.xr.enabled = true;
+            document.body.appendChild(VRButton.createButton(renderer));
+        }
+
+        // scene
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color("white");
+        
+        // camera
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        scene.add(camera);
+        camera.position.set(0.001, 0, 0);
+        camera.lookAt(1, 0, 0);
+        camera.up.set(0, 0, 1);
+
+        // crosshair
+        // TODO: move to class
+        {
+            const cursorGeometry = new THREE.TorusGeometry(0.4, 0.1, 4, 64);
+            const cursorMaterial = new THREE.MeshBasicMaterial({
+                color: 'white',
+                transparent: true,
+                blending: THREE.CustomBlending,
+                blendSrc: THREE.OneMinusDstColorFactor,
+                blendDst: THREE.OneMinusSrcColorFactor,
+            });
+            const cursor = new THREE.Mesh(cursorGeometry, cursorMaterial);
+            camera.add(cursor);
+            cursor.position.z = -1;
+            let scale = 0.04;
+            cursor.scale.set(scale, scale, scale);
+        }
+
+        // pick helper
+        const pickHelper = new PickHelper();
+
+        // light
+        {
+            // const color = 0xFFFFFF;
+            // const intensity = 0.5;
+            // const light = new THREE.AmbientLight(color, intensity);
+            // scene.add(light);
+            const light = new THREE.PointLight( 0xffffff, 1, 100 );
+            light.position.set( 0,0,0);
+            scene.add( light );
+        }
+        
+        // mouse controls
+        if (!isVR) {
+            const orbitControls = new OrbitControls(camera, renderer.domElement);
+        }
+
+        // create objects
+        let objects = [];
+        const geometries = [
+            new THREE.BoxGeometry(1, 1, 1),
+            new THREE.DodecahedronGeometry(1, 1, 1),
+            new THREE.IcosahedronGeometry(1, 1, 1),
+            new THREE.OctahedronGeometry(1, 1, 1),
+            new THREE.TetrahedronGeometry(1, 1, 1),
+        ];
+        const theta_n = 10;
+        const phi_n = 10;
+        for (let theta = 0; theta <= theta_n; theta++) {
+            for (let phi = 0; phi < phi_n; phi++) {
+                if (theta == 0 || theta == theta_n) // poles
+                    if (phi > 0) // one object per pole
+                        break;
+                const theta_p = mapRange(theta, 0, theta_n, 0, Math.PI);
+                const phi_p = mapRange(phi, 0, phi_n, 0, 2*Math.PI);
+                const R = 20;
+
+                const x = R * Math.cos(phi_p) * Math.sin(theta_p);
+                const y = R * Math.sin(phi_p) * Math.sin(theta_p);
+                const z = R * Math.cos(theta_p);
+
+                // let material = new THREE.MeshLambertMaterial({ color: 0x00FF00 });
+                let material = new THREE.MeshLambertMaterial({ color: `hsl(${Math.random() * 360},100%,45%)` });
+                const cube = new THREE.Mesh(pickRandom(geometries), material);
+                cube.scale.set(1.5, 1.5, 1.5);
+                scene.add(cube);
+                objects.push(cube);
+                cube.position.set(x, y, z);
+            }
+        }
+
+
+
+        function render(time) {
+            for (let obj of objects) {
+                obj.rotation.x += 0.1 * Math.random();
+                obj.rotation.y += 0.1 * Math.random();
+            }
+
+            pickHelper.pick({x: 0, y: 0}, scene, camera, time);
+
+            renderer.render(scene, camera);
+        };
+        renderer.setAnimationLoop(render);
+
+    </script>
+</body>
+
+</html>
