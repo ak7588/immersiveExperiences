@@ -28,6 +28,18 @@
 
         const isVR = true;
 
+        function getObjectLookingAt(scene, camera) {
+            // cast a ray through the frustum
+            this.raycaster.setFromCamera({x: 0, y: 0}, camera);
+
+            // get the list of objects the ray intersected
+            const intersectedObjects = this.raycaster.intersectObjects(scene.children);
+
+            if (intersectedObjects.length) {
+                return intersectedObjects[0].object;
+            }
+        }
+
         class PickHelper {
             constructor() {
                 this.raycaster = new THREE.Raycaster();
@@ -35,21 +47,16 @@
                 this.pickedObjectSavedColor = 0;
             }
 
-            pick(normalizedPosition, scene, camera, time) {
+            pick(scene, camera) {
                 // restore the color if there is a picked object
                 if (this.pickedObject) {
                     this.pickedObject.material.color.setHex(this.pickedObjectSavedColor);
                     this.pickedObject = undefined;
                 }
             
-                // cast a ray through the frustum
-                this.raycaster.setFromCamera(normalizedPosition, camera);
-                // get the list of objects the ray intersected
-                const intersectedObjects = this.raycaster.intersectObjects(scene.children);
-                if (intersectedObjects.length) {
-                    // pick the first object. It's the closest one
-                    this.pickedObject = intersectedObjects[0].object;
+                this.pickedObject = getObjectLookingAt();
 
+                if (this.pickedObject) {
                     // save its color
                     this.pickedObjectSavedColor = this.pickedObject.material.color.getHex();
                     
@@ -158,11 +165,14 @@
         }
 
         // controller
-        let controller1 = renderer.xr.getController( 0 );
-        controller1.addEventListener( 'selectstart', () => {scene.background = new THREE.Color("red")} );
-        controller1.addEventListener( 'selectend', () => {scene.background = new THREE.Color("green")}  );
-        controller1.addEventListener( 'connected', () => {scene.background = new THREE.Color("yellow")} );
-        controller1.addEventListener( 'disconnected', () => {scene.background = new THREE.Color("blue")}  );
+        let cardboardPressController = renderer.xr.getController( 0 );
+        cardboardPressController.addEventListener('selectstart', () => {
+            let obj = getObjectLookingAt();
+            obj.scale.set(2, 2, 2);
+        });
+        // cardboardPressController.addEventListener( 'selectend', () => {scene.background = new THREE.Color("green")}  );
+        // cardboardPressController.addEventListener( 'connected', () => {scene.background = new THREE.Color("yellow")} );
+        // cardboardPressController.addEventListener( 'disconnected', () => {scene.background = new THREE.Color("blue")}  );
 
 
         function render(time) {
@@ -171,7 +181,7 @@
                 obj.rotation.y += 0.1 * Math.random();
             }
 
-            pickHelper.pick({x: 0, y: 0}, scene, camera, time);
+            pickHelper.pick(scene, camera);
 
             renderer.render(scene, camera);
         };
