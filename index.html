@@ -157,6 +157,12 @@
             }
         }
 
+        // controller
+        let controller1 = renderer.xr.getController( 0 );
+        controller1.addEventListener( 'selectstart', () => {scene.background = new THREE.Color("red")} );
+        controller1.addEventListener( 'selectend', () => {scene.background = new THREE.Color("green")}  );
+        controller1.addEventListener( 'connected', () => {scene.background = new THREE.Color("yellow")} );
+        controller1.addEventListener( 'disconnected', () => {scene.background = new THREE.Color("blue")}  );
 
 
         function render(time) {
