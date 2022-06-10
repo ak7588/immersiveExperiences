@@ -31,4 +31,5 @@ Zyad:
 - concept polishing: scene/level 1 -> you fail -> scene/level 2 -> you learn -> scene/level 3 -> you understand -> scene/level 1 -> win!
 - cool thing about concept: progress isn't linear and you don't always have to increment. sometimes to progress you need to go back and re-do something!
 - think of the specific tasks to proceed from level to level
+- add event listeners for single, double, and long click on the cardboard for better interaction
 
