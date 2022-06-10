@@ -14,10 +14,11 @@ Final project Google Cardboard VR
 - cardboard button can communicate with the three.js!
 - camera can move like in [this](https://github.com/mrdoob/three.js/blob/master/examples/webgl_effects_anaglyph.html) anaglyph example, but we will only add it after the MVP
 - dynamic change of colors like [here](https://github.com/mrdoob/three.js/blob/master/examples/webgl_framebuffer_texture.html)
+- glowing effect [here](https://github.com/mrdoob/three.js/blob/master/examples/webgl_geometry_dynamic.html)
 
-Amina:
-- explore with animation options for the 3D scene
-- initial idea/inspo for the 3D scene:
+Amina's progress:
+- explored with animation options for the 3D scene
+- found stuff to implement from the initial idea/inspo for the 3D scene:
 
 ![](https://jacobrcampbell.com/assets/media/2020-soul-22-people-in-flow.jpg)
 
