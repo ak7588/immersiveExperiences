@@ -2,7 +2,7 @@
 
 ## Stage 1 / Introduction - Instructions
 
-"Welcome to the world of Perspectives. You have one task to solve -- complete a cycle. Now you are on your own. Go ahead and explore...I hope you're feeling brave today."
+"Welcome to the world of Perspectives. You have one task to solve -- complete a cycle. Now you are on your own. Go ahead and explore...May the light be with you."
 
 ## Fail Cue
 
