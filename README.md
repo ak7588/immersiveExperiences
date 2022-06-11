@@ -44,3 +44,18 @@ Zyad:
 - _feedback loop_ with spatial audio for negative events (mistakes/learning points) to help the user. use audio as a way of spatialization. OR the feedback can be the phone vibration or change of color.
 - for level 3, add goowey texture / fancy designs ON TOP of the solid
 
+
+## June 10th:
+- Refined the idea implementation because Three.JS and WebXR are limited on iOS
+- Now the process goes like this: 1) living on a triangle and exploring around, 2) seeing from pyramid, 3) seeing the whole 3D shape.
+- The premise is to finish all levels without repeating your path. But you can only do that if you gain the whole perspective of the game! So it's essential the user fails the first two stages. The audio or visual cue will be played when the stage is failed. They will be transported to the subsequent stage when fail happens. The user has a chance to go back and "fix" their journey once they gain the whole perspective. A storytelling element appears when the game is finished to outline the importance of gaining perspective and self-improvement / taking accountability to fix mistakes of the past.
+- Started the coding for scene 1
+
+Amina:
+- Refine the front-end for the immersive experience 
+
+Zyad:
+- Work on back-end and math logic behind the game
+
+
+### To Do for next time:
