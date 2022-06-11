@@ -52,10 +52,15 @@ Zyad:
 - Started the coding for scene 1
 
 Amina:
-- Refine the front-end for the immersive experience 
+- Refine the front-end for the immersive experience
+- Worked on storytelling and design files 
 
 Zyad:
 - Work on back-end and math logic behind the game
 
 
 ### To Do for next time:
+- Add more design files
+- Push the codebase
+- Actually implement designs to the codebase
+- Iterate 
