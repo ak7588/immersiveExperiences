@@ -16,10 +16,6 @@
 
 "You can call it a failure -- or you can choose to learn. What choice are you making today? The complete world of Perspectives is now revealed to you. You have all the information you need to complete the cycle. Want to go back and fix your mistakes?"
 
-## Reverse - Instructions
-
-/* Do we need those? I think we can reuse the instructions from the original scenes. */
-
 ## Success Cue
 
 "Wow -- you truly are learning. Congratulations on passing this stage!"
