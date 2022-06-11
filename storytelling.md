@@ -1,6 +1,6 @@
 # Storytelling prompts for *Perspectives*:
 
-## Stage 1 / Introduction - Instructions
+## Stage 1 - Instructions + Intro
 
 "Welcome to the world of Perspectives. You have one task to solve -- complete a cycle. Now you are on your own. Go ahead and explore...May the light be with you."
 
