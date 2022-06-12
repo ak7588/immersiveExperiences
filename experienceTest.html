@@ -114,6 +114,9 @@
 
         
 				// sound
+				const audioElement = document.getElementById( 'music' );
+				audioElement.play();
+				
 				const sound = new THREE.Audio( listener );
 				const audioLoader = new THREE.AudioLoader();
 				audioLoader.load( 'sounds/stage-1-intro.m4a', function( buffer ) {
