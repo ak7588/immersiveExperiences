@@ -15,7 +15,7 @@
 	</head>
 	
 	<audio loop id="music" preload="auto" style="display: none">
-		<source src="sounds/test.mp3" type="audio/mp3">
+		<source src="sounds/stage-1-intro.m4a" type="audio/m4a">
 	</audio>
 	
 	<body>
@@ -119,6 +119,7 @@
 				
 				const audioElement = document.getElementById( 'music' );
 				audioElement.loop = false;
+				audioElement.volume = 0.5;
 				audioElement.play();
 				
 // 				const sound = new THREE.Audio( listener );
