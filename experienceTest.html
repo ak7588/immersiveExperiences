@@ -57,6 +57,8 @@
 			animate();
 
 			function init() {
+				
+				const isVR = true;
 
 				camera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 1, 20000 );
 				camera.position.y = 200;
@@ -167,6 +169,11 @@
 
 				controls.update( delta );
 				renderer.render( scene, camera );
+				
+				if (isVR) {
+				    renderer.xr.enabled = true;
+				    document.body.appendChild(VRButton.createButton(renderer));
+				}
 
 			}
 
