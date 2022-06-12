@@ -117,16 +117,17 @@
         
 				// sound
 				
-				// const audioElement = document.getElementById( 'music' );
-				// audioElement.play();
+				const audioElement = document.getElementById( 'music' );
+				audioElement.loop = false;
+				audioElement.play();
 				
-				const sound = new THREE.Audio( listener );
-				const audioLoader = new THREE.AudioLoader();
-				audioLoader.load( 'sounds/test.mp3', function( buffer ) {
-				    sound.setBuffer( buffer );
-				    sound.setLoop( false );
-				    sound.play();
-				});
+// 				const sound = new THREE.Audio( listener );
+// 				const audioLoader = new THREE.AudioLoader();
+// 				audioLoader.load( 'sounds/test.mp3', function( buffer ) {
+// 				    sound.setBuffer( buffer );
+// 				    sound.setLoop( false );
+// 				    sound.play();
+// 				});
 
 			}
 
