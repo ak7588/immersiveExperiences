@@ -93,6 +93,19 @@
         camera.position.set(0.001, 0, 0);
         camera.lookAt(1, 0, 0);
         camera.up.set(0, 0, 1);
+        
+        // sound
+        // create a global audio source
+        const sound = new THREE.Audio( listener );
+        // load a sound and set it as the Audio object's buffer
+        const audioLoader = new THREE.AudioLoader();
+        audioLoader.load( 'sounds/stage-1-intro.m4a', function( buffer ) {
+            sound.setBuffer( buffer );
+            sound.setLoop( true );
+            sound.setVolume( 0.5 );
+            sound.play();
+        });
+
 
         // crosshair
         // TODO: move to class
