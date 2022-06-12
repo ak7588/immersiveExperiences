@@ -15,7 +15,7 @@
 	</head>
 	
 	<audio loop id="music" preload="auto" style="display: none">
-		<source src="sounds/stage-1-intro.m4a" type="audio/m4a">
+		<source src="sounds/test.mp3" type="audio/mp3">
 	</audio>
 	
 	<body>
@@ -119,7 +119,7 @@
 				
 				const sound = new THREE.Audio( listener );
 				const audioLoader = new THREE.AudioLoader();
-				audioLoader.load( 'sounds/stage-1-intro.m4a', function( buffer ) {
+				audioLoader.load( 'sounds/test.mp3', function( buffer ) {
 				    sound.setBuffer( buffer );
 				    sound.setLoop( false );
 				    sound.play();
