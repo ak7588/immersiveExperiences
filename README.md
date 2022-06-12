@@ -70,3 +70,5 @@ Zyad:
 
 Amina:
 - Figuring out 3D images for the background. Found [this code](https://github.com/mrdoob/three.js/blob/master/examples/webgl_effects_stereo.html)
+- Recorded trial sounds
+- Tried to add sound but that didn't work. Need to fix bugs
