@@ -64,3 +64,9 @@ Zyad:
 - Push the codebase
 - Actually implement designs to the codebase
 - Iterate 
+
+
+## June 12th:
+
+Amina:
+- Figuring out 3D images for the background. Found [this code](https://github.com/mrdoob/three.js/blob/master/examples/webgl_effects_stereo.html)
