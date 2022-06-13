@@ -46,6 +46,8 @@
 			import Stats from './stats.module.js';
 
 			import { FirstPersonControls } from './FirstPersonControls.js';
+			
+			import { OctahedronGeometry } from './OctahedronGeometry.js';
 
 			let camera, controls, scene, renderer, stats;
 
@@ -76,10 +78,8 @@
 				position.usage = THREE.DynamicDrawUsage;
 
 				for ( let i = 0; i < position.count; i ++ ) {
-
 					const y = 35 * Math.sin( i / 2 );
 					position.setY( i, y );
-
 				}
 
 				const texture = new THREE.TextureLoader().load( 'designFiles/water.jpeg' );
@@ -90,6 +90,11 @@
 
 				mesh = new THREE.Mesh( geometry, material );
 				scene.add( mesh );
+				
+				let octahedron = new OctahedronGeometry();
+				octahedron.position.x = - 400;
+				octahedron.rotation.x = - 1.87;
+				scene.add( octahedron );
 
 				renderer = new THREE.WebGLRenderer( { antialias: true } );
 				renderer.setPixelRatio( window.devicePixelRatio );
