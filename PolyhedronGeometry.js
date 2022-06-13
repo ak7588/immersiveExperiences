@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 
-class PolyhedronGeometry extends BufferGeometry {
+class PolyhedronGeometry extends THREE.BufferGeometry {
 
 	constructor( vertices = [], indices = [], radius = 1, detail = 0 ) {
 
