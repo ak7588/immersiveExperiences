@@ -4,7 +4,7 @@
 
 ## Stage 1 - Explore:
 
-"Welcome to the world of Perspectives. Go ahead and explore. Once you're done with exploring, long press to begin your adventures."
+"Welcome to the world of Perspectives. Use the arrows around you to go ahead and explore. Once you're done with exploring, long press to begin your adventures."
 
 ## Play Mode:
 (reword)
