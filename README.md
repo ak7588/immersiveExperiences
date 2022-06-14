@@ -1,4 +1,4 @@
-# immersiveExperiences
+# Immersive Experiences Final Project Journal
 
 Final project Google Cardboard VR
 
