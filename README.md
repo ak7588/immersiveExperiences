@@ -72,3 +72,12 @@ Amina:
 - Figuring out 3D images for the background. Found [this code](https://github.com/mrdoob/three.js/blob/master/examples/webgl_effects_stereo.html)
 - Recorded trial sounds
 - Tried to add sound but that didn't work. Need to fix bugs
+- Resolved sound bug -> works on MozillaXR browser on iOS and Android mobile browsers...
+
+## June 13th:
+- Zyad worked on game logic and created scenes
+- Modification of the storytelling: 1. explore the triangle, 2. play the triangle, 3. explore the pyramid, 4. play the triangle, 5. explore the octahedron, 6. play the triangle (same task to complete but gaining different perspectives).
+
+To Do:
+- modify the storytelling prompts and record audio
+- add design/frontend parts to the codebase 
